@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisão de Mecânica Quântica</title>
+    <!-- Carrega o Tailwind CSS para estilização moderna e responsiva -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Define a fonte Inter como padrão */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117; /* Cor de fundo escura */
+            color: #e6e6e6; /* Cor do texto claro */
+        }
+        .card {
+            background-color: #161b22; /* Fundo dos cards */
+            border: 1px solid #30363d;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+        }
+        .formula {
+            background-color: #010409;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            color: #58a6ff; /* Cor azul claro para fórmulas */
+            overflow-x: auto;
+        }
+        /* Estilos para o botão do quiz */
+        .quiz-button {
+            transition: background-color 0.2s;
+        }
+        .quiz-button.correct {
+            background-color: #38a169; /* Verde para correto */
+            color: white;
+            pointer-events: none;
+        }
+        .quiz-button.incorrect {
+            background-color: #e53e3e; /* Vermelho para incorreto */
+            color: white;
+        }
+        .quiz-button:not(.correct):not(.incorrect):hover {
+            background-color: #2d3748;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'quantum-blue': '#58a6ff',
+                        'quantum-purple': '#8e6cff',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="p-4 sm:p-8">
+
+    <!-- Cabeçalho -->
+    <header class="text-center mb-12">
+        <h1 class="text-4xl sm:text-5xl font-bold text-quantum-blue mb-2">Revisão de Mecânica Quântica</h1>
+        <p class="text-xl text-gray-400">Tudo o que o Bruno precisa lembrar para a sua prova!</p>
+    </header>
+
+    <!-- Conteúdo Principal - Cards de Revisão -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Card 1: Fundamentos Iniciais -->
+        <div class="card p-5 rounded-xl">
+            <h2 class="text-2xl font-semibold mb-3 text-quantum-purple">1. Fundamentos Iniciais</h2>
+            <p class="text-sm text-gray-400 mb-4">Os pilares que quebraram a Física Clássica.</p>
+
+            <details class="mb-4 p-3 rounded-lg bg-black/30">
+                <summary class="font-medium cursor-pointer text-quantum-blue">Dualidade Onda-Partícula</summary>
+                <div class="mt-2 text-sm">
+                    <p>Matéria (elétron) e radiação (fóton) exibem propriedades de onda e de partícula. A relação-chave é a de De Broglie, ligando momento ($\mathbf{p}$) ao comprimento de onda ($\mathbf{\lambda}$):</p>
+                    <div class="formula mt-2">
+                        $$\lambda = \frac{h}{p}$$
+                    </div>
+                </div>
+            </details>
+
+            <details class="p-3 rounded-lg bg-black/30">
+                <summary class="font-medium cursor-pointer text-quantum-blue">Princípio da Incerteza</summary>
+                <div class="mt-2 text-sm">
+                    <p>Não podemos conhecer a posição ($\mathbf{\Delta x}$) e o momento ($\mathbf{\Delta p}$) de uma partícula com precisão arbitrária simultaneamente. O limite é dado por:</p>
+                    <div class="formula mt-2">
+                        $$\Delta x \Delta p \geq \frac{\hbar}{2}$$
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <!-- Card 2: Formalismo e Postulados -->
+        <div class="card p-5 rounded-xl">
+            <h2 class="text-2xl font-semibold mb-3 text-quantum-purple">2. Formalismo Quântico</h2>
+            <p class="text-sm text-gray-400 mb-4">A linguagem matemática da Mecânica Quântica.</p>
+
+            <details class="mb-4 p-3 rounded-lg bg-black/30">
+                <summary class="font-medium cursor-pointer text-quantum-blue">Função de Onda ($\psi$)</summary>
+                <div class="mt-2 text-sm">
+                    <p>Descreve o estado do sistema. O módulo quadrado é a densidade de probabilidade de encontrar a partícula:</p>
+                    <div class="formula mt-2">
+                        $$P(x,t) = |\psi(x,t)|^2$$
+                    </div>
+                    <p class="mt-1">A integral sobre todo o espaço deve ser 1 (Normalização).</p>
+                </div>
+            </details>
+
+            <details class="mb-4 p-3 rounded-lg bg-black/30">
+                <summary class="font-medium cursor-pointer text-quantum-blue">Operadores e Observáveis</summary>
+                <div class="mt-2 text-sm">
+                    <p>Observáveis físicos são representados por Operadores Hermitianos ($\hat{A}$). O resultado de uma medição deve ser um **autovalor** do operador. O **Valor Esperado** é:</p>
+                    <div class="formula mt-2">
+                        $$\langle \hat{A} \rangle = \int \psi^* \hat{A} \psi d\tau$$
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <!-- Card 3: Equação de Schrödinger -->
+        <div class="card p-5 rounded-xl">
+            <h2 class="text-2xl font-semibold mb-3 text-quantum-purple">3. Equação de Schrödinger</h2>
+            <p class="text-sm text-gray-400 mb-4">A Lei de Newton do mundo quântico.</p>
+
+            <details class="mb-4 p-3 rounded-lg bg-black/30">
+                <summary class="font-medium cursor-pointer text-quantum-blue">Equação Dependente do Tempo</summary>
+                <div class="mt-2 text-sm">
+                    <p>Descreve a evolução do estado $\psi$ ao longo do tempo. O operador $\hat{H}$ é o Hamiltoniano (Energia Total):</p>
+                    <div class="formula mt-2">
+                        $$i\hbar \frac{\partial}{\partial t}\psi = \hat{H}\psi$$
+                    </div>
+                </div>
+            </details>
+
+            <details class="p-3 rounded-lg bg-black/30">
+                <summary class="font-medium cursor-pointer text-quantum-blue">Equação Estacionária (E.I. do Tempo)</summary>
+                <div class="mt-2 text-sm">
+                    <p>Usada para encontrar **estados estacionários** (funções de onda com energia bem definida, $E$):</p>
+                    <div class="formula mt-2">
+                        $$\hat{H}\psi(\vec{r}) = E\psi(\vec{r})$$
+                    </div>
+                    <p class="mt-1">Resolver essa equação para potenciais como o poço de potencial leva à quantização da energia.</p>
+                </div>
+            </details>
+        </div>
+
+        <!-- Card 4: Sistemas Modelo e 3D -->
+        <div class="card p-5 rounded-xl">
+            <h2 class="text-2xl font-semibold mb-3 text-quantum-purple">4. Sistemas e Momento Angular</h2>
+            <p class="text-sm text-gray-400 mb-4">As soluções mais importantes.</p>
+
+            <details class="mb-4 p-3 rounded-lg bg-black/30">
+                <summary class="font-medium cursor-pointer text-quantum-blue">Poço, Oscilador e Tunelamento</summary>
+                <div class="mt-2 text-sm">
+                    <p>
+                        <strong class="text-yellow-300">Poço Infinito:</strong> Quantização da energia e $\psi=0$ fora do poço.
+                        <br><strong class="text-yellow-300">Oscilador Harmônico:</strong> Energia de ponto zero $\left(E_0 = \frac{1}{2}\hbar\omega\right)$.
+                        <br><strong class="text-yellow-300">Tunelamento:</strong> Partícula atravessa barreira de potencial mesmo com $E < V_0$.
+                    </p>
+                </div>
+            </details>
+
+            <details class="p-3 rounded-lg bg-black/30">
+                <summary class="font-medium cursor-pointer text-quantum-blue">Momento Angular e Hidrogênio</summary>
+                <div class="mt-2 text-sm">
+                    <p>O quadrado do momento angular ($\mathbf{L}^2$) e sua componente z ($\mathbf{L}_z$) são quantizados:</p>
+                    <div class="formula mt-2">
+                        $$L^2 = \hbar^2 l(l+1)$$
+                        $$L_z = m\hbar$$
+                    </div>
+                    <p class="mt-1">A solução do Átomo de Hidrogênio define os números quânticos $n, l, m$.</p>
+                </div>
+            </details>
+        </div>
+    </div>
+
+    <!-- Seção do Quiz Interativo -->
+    <div class="mt-12 p-8 card rounded-xl">
+        <h2 class="text-3xl font-bold mb-6 text-quantum-blue text-center">Teste Seu Conhecimento!</h2>
+
+        <div id="quiz-container" class="space-y-6 max-w-2xl mx-auto">
+            <!-- As perguntas serão injetadas aqui pelo JavaScript -->
+        </div>
+
+        <div id="quiz-result" class="mt-6 text-center text-xl font-bold hidden"></div>
+    </div>
+
+    <!-- Scripts de Interatividade e Quiz -->
+    <script>
+        const quizData = [
+            {
+                question: "1. Qual operador representa uma grandeza física mensurável (observável) na Mecânica Quântica?",
+                options: ["Operador Unitário", "Operador Hermitiano", "Operador Anti-Hermitiano", "Operador de Projeção"],
+                correctAnswer: "Operador Hermitiano"
+            },
+            {
+                question: "2. Qual o significado físico do módulo quadrado da função de onda, $|\psi(x,t)|^2$?",
+                options: ["Momento da partícula", "Densidade de energia", "Densidade de probabilidade", "Potencial elétrico"],
+                correctAnswer: "Densidade de probabilidade"
+            },
+            {
+                question: "3. O que o Poço de Potencial Infinito demonstrou ser quantizado?",
+                options: ["A posição", "O momento angular", "A energia", "A massa"],
+                correctAnswer: "A energia"
+            }
+        ];
+
+        const quizContainer = document.getElementById('quiz-container');
+        const quizResult = document.getElementById('quiz-result');
+        let correctCount = 0;
+        let answeredQuestions = 0;
+
+        // Função para injetar o quiz no HTML
+        function buildQuiz() {
+            quizData.forEach((item, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'bg-gray-800 p-4 rounded-lg';
+                questionDiv.innerHTML = `<p class="mb-3 font-semibold text-lg text-white">${item.question}</p>`;
+
+                const optionsDiv = document.createElement('div');
+                optionsDiv.className = 'grid grid-cols-1 sm:grid-cols-2 gap-3';
+
+                item.options.forEach(option => {
+                    const button = document.createElement('button');
+                    button.textContent = option;
+                    button.className = 'quiz-button px-4 py-2 rounded-lg text-sm font-medium bg-gray-700 text-gray-200 border border-gray-600';
+                    button.onclick = () => checkAnswer(button, option, item.correctAnswer, index);
+                    optionsDiv.appendChild(button);
+                });
+
+                questionDiv.appendChild(optionsDiv);
+                quizContainer.appendChild(questionDiv);
+            });
+        }
+
+        // Função para checar a resposta e atualizar o estado do quiz
+        function checkAnswer(button, selectedAnswer, correctAnswer, questionIndex) {
+            // Evita responder a mesma pergunta múltiplas vezes
+            if (button.parentElement.querySelector('.correct') || button.parentElement.querySelector('.incorrect')) {
+                return;
+            }
+
+            answeredQuestions++;
+
+            // Desabilita todos os botões daquela pergunta
+            Array.from(button.parentElement.querySelectorAll('button')).forEach(btn => {
+                btn.disabled = true;
+            });
+
+            if (selectedAnswer === correctAnswer) {
+                button.classList.add('correct');
+                correctCount++;
+            } else {
+                button.classList.add('incorrect');
+                // Revela a resposta correta
+                const correctButton = Array.from(button.parentElement.querySelectorAll('button')).find(btn => btn.textContent === correctAnswer);
+                if (correctButton) {
+                    correctButton.classList.add('correct');
+                }
+            }
+
+            // Se todas as perguntas foram respondidas, mostra o resultado final
+            if (answeredQuestions === quizData.length) {
+                showResults();
+            }
+        }
+
+        // Função para mostrar o resultado final
+        function showResults() {
+            quizResult.classList.remove('hidden');
+            const total = quizData.length;
+            const score = Math.round((correctCount / total) * 100);
+            quizResult.innerHTML = `Resultado Final: Você acertou <span class="text-quantum-blue">${correctCount} de ${total}</span> perguntas. (${score}%)`;
+        }
+
+        // Inicializa o quiz
+        window.onload = function() {
+            buildQuiz();
+            // Renderiza as fórmulas LaTeX após o DOM estar pronto
+            if (window.MathJax) {
+                MathJax.Hub.Typeset();
+            }
+        };
+    </script>
+    <!-- Script do MathJax para renderizar as fórmulas LaTeX -->
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
